@@ -1,0 +1,66 @@
+worker ssh commands
+ssh -i kvs-coord.pem ec2-user@34.229.253.154
+ssh -i kvs-coord.pem ec2-user@54.196.82.215
+ssh -i kvs-coord.pem ec2-user@54.145.115.87
+ssh -i kvs-coord.pem ec2-user@98.83.219.159
+
+flame ssh commands
+ssh -i kvs-coord.pem ec2-user@34.229.242.86
+ssh -i kvs-coord.pem ec2-user@3.92.164.81
+ssh -i kvs-coord.pem ec2-user@35.173.254.8
+ssh -i kvs-coord.pem ec2-user@34.235.144.244
+ssh -i kvs-coord.pem ec2-user@35.173.190.234
+ssh -i kvs-coord.pem ec2-user@13.220.227.2
+ssh -i kvs-coord.pem ec2-user@3.81.37.200
+
+
+other stuff
+
+kvs coordinator: 
+ssh -i kvs-coord.pem ec2-user@3.234.211.39
+cd Fa25-CIS5550-Project-ACAE && ./deploy-kvs-coordinator.sh
+
+kvs worker (4 of these): 
+ssh -i kvs-coord.pem ec2-user@<public_IP>
+cd Fa25-CIS5550-Project-ACAE && ./deploy-kvs-worker.sh 8001 worker1 172.31.74.223:8000 s3://555-project-crawl
+
+flame coord: 
+ssh -i kvs-coord.pem ec2-user@13.222.40.216
+cd Fa25-CIS5550-Project-ACAE && ./deploy-flame-coordinator.sh 9000 172.31.74.223:8000
+
+flame worker: 
+ssh -i kvs-coord.pem ec2-user@<public_IP>
+cd Fa25-CIS5550-Project-ACAE && ./deploy-flame-worker.sh 9001 172.31.70.23:9000
+
+submit: 
+ssh -i kvs-coord.pem ec2-user@100.48.42.250
+cd Fa25-CIS5550-Project-ACAE && ./deploy-submit-job.sh crawler "https://en.wikipedia.org/wiki/Kristen_Stewart" 172.31.70.23:9000
+
+our aws setup is: 
+
+m6ilarge for the kvs coordinator
+i3xlarge for the kvs worker
+m6ilarge for the flame coordinator
+c6i2xlarge for the flame worker
+and a t3 micro for submitting
+
+aws sync instructions: 
+
+Go to AWS Console, Click your name (top right), Security credentials
+Scroll down to "Access keys"
+Click "Create access key"
+Choose "Command Line Interface (CLI)"
+Download the key
+
+in terminal: 
+
+aws configure
+
+enter these: 
+Access Key ID (from the key you just created)
+Secret Access Key (from the key you just created)
+Region: us-east-1 (or whatever region your bucket is in)
+Output format: json
+
+finally run this in terminal from root of repository to sync: 
+aws s3 sync worker1/pt-crawl s3://555-project-crawl/pt-crawl

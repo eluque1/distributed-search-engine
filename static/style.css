@@ -1,0 +1,189 @@
+/* 1. IMPORT MODERN FONTS (Clean & Round) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Inter:wght@400;500&display=swap');
+
+/* GLOBAL VARIABLES (Theme Colors) */
+:root {
+    --primary-purple: #9370DB;    /* Medium Purple */
+    --light-purple: #E6E6FA;      /* Lavender */
+    --dark-text: #2d3436;
+    --gray-text: #636e72;
+    --link-blue: #6c5ce7;         /* A pretty purple-blue for links */
+    --hover-purple: #8A2BE2;
+}
+
+/* GLOBAL STYLES */
+body {
+    font-family: 'Inter', sans-serif; /* Very readable modern font */
+    margin: 0;
+    padding: 0;
+    color: var(--dark-text);
+    background-color: #ffffff;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+/* HEADER SECTION */
+.search-header {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 20px 40px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(5px); /* Modern "glass" effect */
+}
+
+/* TEAM LOGO TEXT */
+.logo-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--primary-purple);
+    margin-right: 30px;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between text and spider icon if you add it */
+}
+
+.logo-text:hover {
+    color: var(--hover-purple);
+}
+
+/* SEARCH FORM */
+.search-form {
+    display: flex;
+    align-items: center;
+    max-width: 650px;
+    width: 100%;
+    position: relative;
+}
+
+input[type="text"] {
+    flex-grow: 1;
+    padding: 14px 25px;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    border: 2px solid transparent;
+    border-radius: 50px; /* Fully rounded pill shape */
+    outline: none;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+    background-color: #fff;
+    border-color: var(--light-purple);
+    box-shadow: 0 4px 12px rgba(147, 112, 219, 0.15); /* Soft purple glow */
+}
+
+button {
+    margin-left: 10px;
+    padding: 12px 28px;
+    background-color: var(--primary-purple);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+button:hover {
+    background-color: var(--hover-purple);
+    transform: translateY(-1px); /* Subtle lift effect */
+    box-shadow: 0 4px 10px rgba(138, 43, 226, 0.3);
+}
+
+/* RESULTS AREA */
+.results-container {
+    max-width: 800px;
+    margin-left: 180px;
+    padding-top: 35px;
+    padding-bottom: 60px;
+}
+
+.result-count {
+    color: var(--gray-text);
+    font-size: 14px;
+    margin-bottom: 30px;
+    font-weight: 400;
+}
+
+/* INDIVIDUAL RESULT CARD */
+.result {
+    margin-bottom: 35px;
+    max-width: 650px;
+    transition: transform 0.2s ease;
+}
+
+.result:hover {
+    /* Optional: slight visual cue when hovering a result block */
+}
+
+.result .url {
+    color: var(--dark-text);
+    font-size: 13px;
+    margin-bottom: 6px;
+    opacity: 0.7;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* The Title Link */
+.result a.title {
+    color: var(--link-blue);
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    display: block;
+    line-height: 1.4;
+    margin-bottom: 4px;
+}
+
+.result a.title:hover {
+    text-decoration: underline;
+    color: var(--hover-purple);
+}
+
+/* Snippet Text */
+.result .snippet {
+    color: #555;
+    font-size: 15px;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+/* PageRank Badge - Clean & Soft */
+.rank-badge {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--primary-purple);
+    background-color: var(--light-purple);
+    padding: 3px 8px;
+    border-radius: 12px;
+    margin-left: 10px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+/* FOOTER (Optional) */
+.footer {
+    background-color: #fafafa;
+    padding: 30px;
+    text-align: center;
+    font-size: 13px;
+    color: #999;
+    border-top: 1px solid #eee;
+    margin-top: 60px;
+}
